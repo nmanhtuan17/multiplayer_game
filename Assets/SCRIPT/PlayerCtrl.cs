@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-
+using UnityEngine.UI;
+using TMPro;
 public class PlayerCtrl : MonoBehaviour
 {
+    public TMP_Text namePlayer;
+
+
     public float speed;
     float resetSpeed;
     public float dashSpeed, dashTime;
@@ -26,6 +30,15 @@ public class PlayerCtrl : MonoBehaviour
         healthScript = FindObjectOfType<Health>();
 
         _border = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
+
+        if (view.IsMine)
+        {
+            namePlayer.text = PhotonNetwork.NickName;
+        }
+        else
+        {
+            namePlayer.text = view.Owner.NickName;
+        }
     }
 
     

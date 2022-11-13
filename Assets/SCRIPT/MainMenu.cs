@@ -9,9 +9,11 @@ public class MainMenu : MonoBehaviourPunCallbacks
 {
     public InputField createInput;
     public InputField joinInput;
-    void Start()
+    public InputField nameInput;
+
+    public void changeName()
     {
-        
+        PhotonNetwork.NickName = nameInput.text;
     }
 
     public void CreateRoom()
